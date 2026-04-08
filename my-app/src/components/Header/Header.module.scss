@@ -1,0 +1,21 @@
+.wrapper {
+  border-bottom: 1px solid rgba(170, 59, 255, 0.2);
+  background: linear-gradient(135deg, #fff 0%, #faf5ff 100%);
+}
+
+.header {
+  margin: 25px auto 25px auto;
+  // font-size: 1.2rem;
+  text-align: center;
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+.text {
+  font-size: 1.2rem;
+   text-align: center;
+  font-family: var(--heading);
+  font-weight: 500;
+  color: linear-gradient(135deg, #aa3bff, #7c3aed);
+}

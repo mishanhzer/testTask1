@@ -1,16 +1,24 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+
+import { Header } from './components/Header/Header.js'
+import { LeftSide } from './components/LeftSide/LeftSide.js'
+import { RightSide } from './components/RightSide/RightSide.js'
+
+import styles from './App.module.scss'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-  <div>
-    1
-  </div>
+    <div className={styles.app}>
+      <Header />
+
+      <div className={styles.content}>
+        <LeftSide />
+        <RightSide />
+      </div>
+
+    </div>
   )
 }
 
