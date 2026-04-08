@@ -1,25 +1,38 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-import { Header } from './components/Header/Header.js'
 import { LeftSide } from './components/LeftSide/LeftSide.js'
 import { RightSide } from './components/RightSide/RightSide.js'
 
-import styles from './App.module.scss'
+import { FormDataTypes } from './types'
 
-function App() {
-  const [count, setCount] = useState(0)
+export const App = () => {
+  const [tasks, setTasks] = useState<FormDataTypes[]>([])
+
+  useEffect(() => {
+    const savedData = localStorage.getItem('data')
+    if (savedData) {
+      setTasks(JSON.parse(savedData))
+    }
+  }, [])
+
+  const handleAddTask = (newTask: FormDataTypes) => {
+    const updatedTasks = [...tasks, newTask]
+    setTasks(updatedTasks)
+    localStorage.setItem('data', JSON.stringify(updatedTasks))
+  }
+
+  const handleDeleteTask = (id: string) => {
+    const updatedTasks = tasks.filter(task => task.id !== id)
+    setTasks(updatedTasks)
+    localStorage.setItem('data', JSON.stringify(updatedTasks))
+  }
 
   return (
-    <div className={styles.app}>
-      <Header />
-
-      <div className={styles.content}>
-        <LeftSide />
-        <RightSide />
-      </div>
-
+    <div style={{ display: 'flex' }}>
+      <LeftSide onAddTask={handleAddTask} />
+      <RightSide
+        tasks={tasks}
+        onDeleteTask={handleDeleteTask} />
     </div>
   )
 }
-
-export default App

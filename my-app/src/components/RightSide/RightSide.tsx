@@ -1,29 +1,28 @@
-import { useState, useEffect } from 'react'
+import { Task } from './Task/Task'
 
 import style from './RightSide.module.scss'
 
-export const RightSide = () => {
-  const [testData, setTestData] = useState({})
-  console.log(testData)
-  useEffect(() => {
-    const savedData = localStorage.getItem('data')
-    if (savedData) {
-      const parseData = JSON.parse(savedData)
-      setTestData(parseData)
-    }
-  }, [])
+import { FormDataTypes } from '../../types'
+
+export const RightSide = ({
+  tasks,
+  onDeleteTask
+}: { tasks: FormDataTypes[], onDeleteTask: (id: string) => void }) => {
+  const handleDelete = (id: string) => {
+    onDeleteTask(id)
+  }
   return (
     <div className={style.wrapper}>
       <div>Filter</div>
       <div>
         <div>Список задач:</div>
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+        {tasks.map((task) => (
+          <Task
+            onDelete={(id: string) => handleDelete(id)}
+            key={task.id}
+            data={task} />
+        ))}
       </div>
-
     </div>
   )
 }
