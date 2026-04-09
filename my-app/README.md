@@ -1,16 +1,64 @@
-# React + Vite
+# 📋 Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение для управления задачами с фильтрацией и сохранением в localStorage.
 
-Currently, two official plugins are available:
+## 🚀 Технологии
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 18
+- TypeScript
+- Zustand (управление состоянием)
+- SCSS Modules (стилизация)
 
-## React Compiler
+## 📦 Установка
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+# Клонируйте репозиторий
+git clone <your-repo-url>
 
-## Expanding the ESLint configuration
+# Перейдите в папку проекта
+cd task-manager
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Установите зависимости
+npm install
+
+# Запустите проект
+npm run dev
+
+# структура проекта:
+src/
+├── components/
+│   ├── LeftSide/           # Форма создания задач
+│   │   ├── LeftSide.tsx
+│   │   ├── LeftSide.module.scss
+│   │   └── ui/
+│   │       └── Field.tsx   # Поле ввода
+│   │
+│   ├── RightSide/          # Список задач и фильтры
+│   │   ├── RightSide.tsx
+│   │   ├── RightSide.module.scss
+│   │   ├── constants.js    # Данные для фильтров
+│   │   ├── ui/
+│   │   │   └── Filter.tsx  # Кнопки фильтрации
+│   │   └── ListTasks/
+│   │       ├── ListTasks.tsx
+│   │       ├── ListTasks.module.scss
+│   │       └── Task/
+│   │           ├── Task.tsx
+│   │           ├── Task.module.scss
+│   │           └── ui/
+│   │               └── Button.tsx  # Кнопка удаления
+│   │
+│   └── Header/             # Шапка приложения
+│       ├── Header.tsx
+│       └── Header.module.scss
+│
+├── store/
+│   └── store.ts            # Zustand store (persist + immer)
+│
+├── types/
+│   └── index.ts            # TypeScript типы
+│
+├── App.tsx                 # Главный компонент
+├── App.module.scss
+├── main.tsx
+└── index.css
