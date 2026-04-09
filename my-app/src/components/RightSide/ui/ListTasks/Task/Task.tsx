@@ -23,7 +23,7 @@ export const Task = ({
       <div className={style.stack}>
         <span className={style.stackLabel}>Стэк технологий:</span>
         <div className={style.stackTags}>
-          {data.stack.split(',').map((tech: string, index: number) => (
+          {data.stack && data.stack.split(',').map((tech: string, index: number) => (
             <span
               key={`${data.id}-${index}`}
               className={style.tag}>

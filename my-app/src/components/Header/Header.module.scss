@@ -5,17 +5,36 @@
 
 .header {
   margin: 25px auto 25px auto;
-  // font-size: 1.2rem;
   text-align: center;
   font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
+
+  @media (max-width: 768px) {
+    margin: 1.25rem auto;
+  }
+
+  @media (max-width: 320px) {
+    margin: 1rem auto;
+  }
 }
 
 .text {
   font-size: 1.2rem;
-   text-align: center;
+  text-align: center;
   font-family: var(--heading);
-  font-weight: 500;
-  color: linear-gradient(135deg, #aa3bff, #7c3aed);
+  font-weight: 600;
+  background: linear-gradient(135deg, #aa3bff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.875rem;
+  }
 }
